@@ -17,16 +17,10 @@ Route::get('/', function () {
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
-
 Route::auth();
 
 Route::group(['middleware' => ['web','auth']],function(){
 
-       Route::get('/admin',['uses' => 'Admin\AdminController@show','as' => 'admin_index']);
-       Route::get('/',['uses' => 'Admin\AdminPostController@create','as' => 'admin_add_post']);
+       Route::get('/home',['uses' => 'HomeController@index','as' => 'home']);
 
-});
-Route::get('/test',function (){
-    return view('test');
 });
